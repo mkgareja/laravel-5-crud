@@ -22,4 +22,8 @@ Route::post('/save-Student','Crud@saveStudent');
 Route::post('/update-Student','Crud@updateStudent');
 Route::get('/delete/{id}','Crud@delete');
 Route::get('/edit/{id}','Crud@edit');
+//test hello word 
+Route::get('/helloword',function(){
+	return 'Hello World';
+});
 		
