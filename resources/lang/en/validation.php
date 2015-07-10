@@ -90,6 +90,21 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            'required' => 'We need to know your e-mail address!',
+        ],
+        'fname' => [
+            'required' => 'We need to know your First name!',
+        ],
+        'lname' => [
+            'required' => 'We need to know your Last name!'
+        ],
+        'password' => [
+            'required' => 'We need to know your password too!'
+        ],
+        'cpassword' => [
+            'required' => 'we need to know your confirm password too!'
+        ],
     ],
 
     /*

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 //namespace App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -30,6 +33,37 @@ class Crud extends Controller
     {
         $student = new Student();
         //$students->id = 100;
+        $rules = array(
+            'fname' => 'required',
+            'lname' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'cpassword' => 'required|same:password'
+             );
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+
+        // get the error messages from the validator
+        //$messages = $validator->messages();
+        $messages = [
+            'email.required' => 'We need to know your e-mail address!',
+            'fname.required' => 'We need to know your first name!', 
+            'lname.required' => 'We need to know your last name!',
+            'password.required' => 'We need to know your password!',
+            'cpassword.required' => 'We need to know your password!',
+        ];
+         //$messages = $validator->messages();
+
+        // redirect our user back to the form with the errors from the validator
+        return Redirect::to('/')
+            ->withErrors($validator);
+        // redirect our user back to the form with the errors from the validator
+        // return Redirect::to('/')
+        //     ->withErrors($messages);
+
+        } else {
+        $validator = Validator::make(Input::all(), $rules);
         $student->fname = $request->input('fname');
         $student->lname = $request->input('lname');
         $student->email = $request->input('email');
@@ -37,7 +71,10 @@ class Crud extends Controller
         $student->address = $request->input('address');
         $student->save();
         //Session::flash('message','students save');
-        return redirect('/');
+        $status='Data inserted Successfull!!!!';
+        return redirect('/')->with('status',$status);
+        //return Redirect::to('/')->with('status',$status);
+        }
 
     }
     /**

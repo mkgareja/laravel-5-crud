@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<nav class="navbar navbar-default" role="navigation">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title Page</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	<div class="container">
+		<nav class="navbar navbar-default" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -52,6 +66,20 @@
 	</div>
 </div>
 <div class="container">
+@if (session('status'))
+    <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+        {{ session('status') }}
+    </div>
+@endif
+@if ($errors->has())
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>        
+            @endforeach
+        </div>
+        @endif
 {!! Form::open(array('url' => 'save-Student')) !!}
 	<legend>Form</legend>
 
@@ -71,7 +99,11 @@
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="text" name="password" class="form-control" id="password">
+		<input type="password" name="password" class="form-control" id="password">
+	</div>
+	<div class="form-group">
+		<label for="password">Confirm Password</label>
+		<input type="password" name="cpassword" class="form-control" id="cpassword">
 	</div>
 	<div class="form-group">
 		<label for="address">Address</label>
@@ -90,11 +122,24 @@
 			Panel footer
 		</div>
 </div>
-</body>
-</html>
-
+</div>
 <!-- Latest compiled and minified CSS & JS -->
+
+	</body>
+</html>
 <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script><!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<script type="text/javascript">
+ 		function showHide() {
+   		var div = document.getElementById("myalert");
+   		if (div.style.display == 'none') {
+     		div.style.display = '';
+   		}
+   		else {
+     	div.style.display = 'none';
+   		}
+ }
+</script>
