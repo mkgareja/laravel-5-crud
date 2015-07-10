@@ -1,0 +1,12 @@
+
+<---------------------Encrypt and decrypt data--------->
+// Encrypt
+$key = md5(Config::get('app.key') . $userString);
+Crypt::setKey($key);
+$encypted = Crypt::encrypt($input);
+
+// decrypt
+$key = md5(Config::get('app.key') . $userString);
+Crypt::setKey($key);
+$decypted = Crypt::decrypt($encypted);
+<--------------------------------------------------------->
