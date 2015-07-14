@@ -8,6 +8,8 @@
 
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="icon" href="https://en.opensuse.org/images/8/83/Thunderbird_logo.png" sizes="16x16">
+
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +70,7 @@
 @yield('mainconteiner')
 <div class="panel panel-default">
 	  <div class="panel-body">
-			Panel content
+			The current UNIX timestamp is {{ time() }}.
 	  </div>
 	  <div class="panel-footer center">
 			Panel footer

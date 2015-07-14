@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-
+use Symfony\Component\HttpFoundation\Exception\HttpException;
 //namespace App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Http\FormRequest;
@@ -19,11 +19,18 @@ class Crud extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //return $uri = $request->path();
+        //Verify the path or incoming request admin.
+        // if ($request->is('admin/*')) {
+        //         //
+        // 
+        //    }
+        //its give full path
+        //return $url = $request->url();
         return view('crud/index');
     }
-
     public function view()
     {
         $student = Student::all();
@@ -85,7 +92,7 @@ class Crud extends Controller
      */
     public function create()
     {
-        //
+        $url = action('FooController@method');
     }
 
     /**

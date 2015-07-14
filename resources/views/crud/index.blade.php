@@ -22,6 +22,7 @@
 	<div class="form-group">
 		<label for="fname">First Name</label>
 		<input type="text" name="fname" class="form-control" id="fname">
+		<input type="hidden" name="_token" id="input" value="<?php echo csrf_token(); ?>" >
 	</div>
 
 	<div class="form-group">
